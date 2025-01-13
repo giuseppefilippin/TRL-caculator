@@ -8,31 +8,56 @@
 </head>
 <body>
   <h1>Calculadora TRL</h1>
-  <div id="app">
-    <!-- Tabela de perguntas -->
-    <table>
-      <thead>
-        <tr>
-          <th>% Completo</th>
-          <th>Pergunta</th>
-          <th>Resposta</th>
-          <th>Comentários</th>
-        </tr>
-      </thead>
-      <tbody id="questionsTable">
-        <!-- As perguntas serão carregadas dinamicamente aqui -->
-      </tbody>
-    </table>
 
-    <!-- Navegação entre níveis -->
-    <div id="navigation">
-      <button id="prevButton">Anterior</button>
-      <button id="nextButton">Próximo</button>
+  <!-- Etapa 1: Informações iniciais -->
+  <div id="step1" class="step active">
+    <h2>Bem-vindo à Calculadora TRL</h2>
+    <p>Preencha as informações abaixo para começar a avaliação:</p>
+    <div class="form-group">
+      <label for="nomeTecnologia">Nome da Tecnologia:</label>
+      <input type="text" id="nomeTecnologia" placeholder="Digite o nome da tecnologia">
     </div>
+    <div class="form-group">
+      <label for="nomeResponsavel">Responsável pela TC:</label>
+      <input type="text" id="nomeResponsavel" placeholder="Digite o nome do responsável">
+    </div>
+    <div class="form-group">
+      <label for="dataAvaliacao">Data da Avaliação:</label>
+      <input type="date" id="dataAvaliacao">
+    </div>
+    <button id="startButton">Iniciar Avaliação</button>
   </div>
 
-  <!-- Botão para calcular o TRL -->
-  <button id="submitButton">Calcular TRL</button>
+  <!-- Etapa 2: Perguntas -->
+  <div id="step2" class="step">
+    <div id="app">
+      <table>
+        <thead>
+          <tr>
+            <th>% Completo</th>
+            <th>Pergunta</th>
+            <th>Resposta</th>
+          </tr>
+        </thead>
+        <tbody id="questionsTable">
+          <!-- As perguntas serão carregadas dinamicamente aqui -->
+        </tbody>
+      </table>
+
+      <!-- Caixa de comentários para o nível atual -->
+      <div id="nivelComentario" class="form-group">
+        <label for="comentariosNivel">Comentários para este nível:</label>
+        <textarea id="comentariosNivel" placeholder="Adicione comentários para este nível"></textarea>
+      </div>
+
+      <div id="navigation">
+        <button id="prevButton">Anterior</button>
+        <button id="nextButton">Próximo</button>
+      </div>
+    </div>
+
+    <button id="submitButton">Calcular TRL</button>
+  </div>
 
   <script src="scripts/script.js"></script>
 </body>

@@ -1,18 +1,51 @@
 let respostas = {}; // Objeto global para armazenar respostas
+let comentarios = {}; // Armazena comentários por nível
 let nivelAtual = 0; // Controla o nível atual exibido
+
+// Função para exibir a etapa 2 (perguntas)
+function iniciarAvaliacao() {
+  const nomeTecnologia = document.getElementById("nomeTecnologia").value.trim();
+  const nomeResponsavel = document.getElementById("nomeResponsavel").value.trim();
+  const dataAvaliacao = document.getElementById("dataAvaliacao").value;
+
+  // Validação dos campos obrigatórios
+  if (!nomeTecnologia || !nomeResponsavel || !dataAvaliacao) {
+    alert("Por favor, preencha todos os campos antes de continuar.");
+    return;
+  }
+
+  // Salvar os dados no localStorage (opcional)
+  localStorage.setItem("nomeTecnologia", nomeTecnologia);
+  localStorage.setItem("nomeResponsavel", nomeResponsavel);
+  localStorage.setItem("dataAvaliacao", dataAvaliacao);
+
+  // Trocar de tela (de step1 para step2)
+  document.getElementById("step1").classList.remove("active");
+  document.getElementById("step2").classList.add("active");
+
+  // Iniciar a exibição do nível atual
+  exibirNivel(nivelAtual);
+}
+
+// Associar a função ao botão
+document.getElementById("startButton").onclick = iniciarAvaliacao;
+
+// Inicializar a página com step1 ativo
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("step1").classList.add("active");
+});
 
 // Função para carregar perguntas de um arquivo JSON
 async function carregarPerguntas() {
   try {
-    const response = await fetch('scripts/perguntas.json'); // Carrega o arquivo JSON
+    const response = await fetch('scripts/perguntas.json');
     if (!response.ok) {
       throw new Error(`Erro ao carregar o JSON: ${response.statusText}`);
     }
-    const data = await response.json();
-    return data;
+    return await response.json();
   } catch (error) {
-    console.error(error);
-    alert("Erro ao carregar as perguntas. Verifique o console para mais detalhes.");
+    console.error("Erro ao carregar perguntas:", error);
+    alert("Erro ao carregar perguntas. Verifique o console.");
     return [];
   }
 }
@@ -22,50 +55,42 @@ async function exibirNivel(nivel) {
   const perguntas = await carregarPerguntas();
   const nivelSelecionado = perguntas[nivel];
   const questionsTable = document.getElementById("questionsTable");
-  questionsTable.innerHTML = ""; // Limpa a tabela antes de adicionar o novo nível
+  questionsTable.innerHTML = "";
 
-  // Adicionar perguntas à tabela
   nivelSelecionado.perguntas.forEach((pergunta) => {
     const row = document.createElement("tr");
 
-    // Porcentagem
     const percentCell = document.createElement("td");
     percentCell.textContent = "0%";
     row.appendChild(percentCell);
 
-    // Pergunta
     const questionCell = document.createElement("td");
     questionCell.textContent = `${nivelSelecionado.nivel}: ${pergunta}`;
     row.appendChild(questionCell);
 
-    // Resposta
     const answerCell = document.createElement("td");
     const select = document.createElement("select");
     select.innerHTML = `<option value="">Selecione</option><option value="sim">Sim</option><option value="nao">Não</option>`;
-    // Carregar resposta salva, se existir
-    if (respostas[pergunta]) {
-      select.value = respostas[pergunta];
-    }
     select.onchange = () => {
-      respostas[pergunta] = select.value; // Salvar a resposta
-      atualizarProgresso(); // Atualizar progresso sempre que uma resposta for alterada
+      respostas[pergunta] = select.value;
+      atualizarProgresso();
     };
     answerCell.appendChild(select);
     row.appendChild(answerCell);
 
-    // Comentários
-    const commentCell = document.createElement("td");
-    const textarea = document.createElement("textarea");
-    commentCell.appendChild(textarea);
-    row.appendChild(commentCell);
-
     questionsTable.appendChild(row);
   });
 
-  atualizarProgresso(); // Atualizar progresso ao carregar o nível
+  const comentariosNivel = document.getElementById("comentariosNivel");
+  comentariosNivel.value = comentarios[nivel] || "";
+  comentariosNivel.onchange = () => {
+    comentarios[nivel] = comentariosNivel.value;
+  };
+
+  atualizarProgresso();
 }
 
-// Função para calcular o progresso
+// Função para atualizar o progresso
 function atualizarProgresso() {
   const progressoPorNivel = {};
   const perguntas = document.querySelectorAll("tr");
@@ -75,7 +100,7 @@ function atualizarProgresso() {
     const select = row.querySelector("select");
 
     if (nivelCell && select) {
-      const nivelTexto = nivelCell.textContent.split(":")[0].trim(); // Extrai o nível TRL
+      const nivelTexto = nivelCell.textContent.split(":")[0].trim();
       const resposta = select.value;
 
       if (!progressoPorNivel[nivelTexto]) {
@@ -89,14 +114,13 @@ function atualizarProgresso() {
     }
   });
 
-  // Atualizar a tabela com os percentuais
   const rows = document.querySelectorAll("tr");
   rows.forEach((row) => {
     const nivelCell = row.querySelector("td:nth-child(2)");
     const percentCell = row.querySelector("td:nth-child(1)");
 
     if (nivelCell && percentCell) {
-      const nivelTexto = nivelCell.textContent.split(":")[0].trim(); // Extrai o nível TRL
+      const nivelTexto = nivelCell.textContent.split(":")[0].trim();
       const progresso = progressoPorNivel[nivelTexto];
 
       if (progresso) {
@@ -107,39 +131,33 @@ function atualizarProgresso() {
   });
 }
 
-// Navegação entre níveis
-document.getElementById("prevButton").onclick = () => {
-  if (nivelAtual > 0) {
-    nivelAtual--;
-    exibirNivel(nivelAtual);
-  }
-};
 
-document.getElementById("nextButton").onclick = () => {
-  if (nivelAtual < 8) { // Total de níveis é 9 (0 a 8)
-    nivelAtual++;
-    exibirNivel(nivelAtual);
-  }
-};
-
-// Calcular o TRL ao final
+// Função para calcular o TRL
 document.getElementById("submitButton").onclick = async () => {
-  const perguntas = await carregarPerguntas(); // Carrega todas as perguntas
+  const perguntas = await carregarPerguntas();
   let nivelCalculado = 0;
 
-  for (let i = 0; i < perguntas.length; i++) {
-    const nivel = perguntas[i];
+  perguntas.forEach((nivel, i) => {
     const todasSim = nivel.perguntas.every((pergunta) => respostas[pergunta] === "sim");
-
-    if (todasSim) {
-      nivelCalculado = i + 1; // O TRL começa em 1
-    } else {
-      break; // Para o cálculo se um nível não estiver completo
-    }
-  }
+    if (todasSim) nivelCalculado = i + 1;
+  });
 
   alert(`O nível TRL calculado é: ${nivelCalculado}`);
 };
 
-// Inicializar com o primeiro nível
-document.addEventListener("DOMContentLoaded", () => exibirNivel(nivelAtual));
+// Navegação entre níveis
+document.getElementById("prevButton").onclick = () => {
+  if (nivelAtual > 0) nivelAtual--;
+  exibirNivel(nivelAtual);
+};
+
+document.getElementById("nextButton").onclick = async () => {
+  const perguntas = await carregarPerguntas();
+  if (nivelAtual < perguntas.length - 1) nivelAtual++;
+  exibirNivel(nivelAtual);
+};
+
+// Inicializar
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("step1").classList.add("active");
+});
