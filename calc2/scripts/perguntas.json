@@ -1,0 +1,88 @@
+[
+    {
+      "nivel": "TRL 1: Principios básicos observados e reportados",
+      "perguntas": [
+        "Foram identificados os princípios básicos?",
+        "Foram identificadas potenciais aplicações para a tecnologia?",
+        "Foram documentado os estudos que confirmam os princípios básicos?",
+        "Foram identificadas leis e pressupostos utilizados na nova tecnologia e não proíbem o desenvolvimento?",
+        "Foi levantada e documentada a ideia dos riscos, custos e cronograma para desenvolvimento da pesquisa tecnológica?",
+        "Foi identificado quem e onde será realizada as pesquisas da tecnologia?",
+        "Existe fonte monetária ou interessados, stakeholders (patrocinadores) na concretização da tecnologia?",
+        "Foi levantado se alguma outra instituição de pesquisa ou empresa está pesquisando a tecnologia no país?",
+        "Foi realizada pesquisa em ambiente exploratório?",
+        "Existem publicações científicas em revistas/anais/congressos a respeito da tecnologia?"
+      ]
+    },
+    {
+      "nivel": "TRL 2: Conceito tecnológico e/ou aplicação formulados",
+      "perguntas": [
+        "Foram formuladas as potenciais aplicações?",
+        "Foi realizada pesquisa em ambiente de trabalho?",
+        "Foram identificadas as principais funções a serem desempenhadas pela tecnologia?",
+        "Foi documentada a viabilidade das aplicações confirmadas por estudos?",
+        "Foi identificada a funcionalidade da tecnologia?",
+        "Foram identificados possíveis GAPs da tecnologia e documentados?",
+        "Sabe que programa (projeto) a tecnologia vai apoiar?",
+        "Foram identificados potenciais clientes?",
+        "Cliente demonstra interesse na aplicação?"
+      ]
+    },
+    {
+      "nivel": "TRL 3: Tecnologia validada em ambiente de laboratório",
+      "perguntas": [
+        "A tecnologia foi validada em ambiente de laboratório?",
+        "Os testes confirmam a viabilidade tecnológica?",
+        "A documentação técnica foi revisada e validada?"
+      ]
+    },
+    {
+      "nivel": "TRL 4: Tecnologia validada em ambiente relevante",
+      "perguntas": [
+        "A tecnologia foi validada em ambiente relevante?",
+        "Os protótipos foram desenvolvidos e testados?",
+        "Os parâmetros de desempenho foram documentados?"
+      ]
+    },
+    {
+      "nivel": "TRL 5: Tecnologia testada em ambiente relevante",
+      "perguntas": [
+        "A tecnologia foi testada em ambiente relevante?",
+        "O desempenho da tecnologia foi monitorado?",
+        "As condições de operação foram documentadas?"
+      ]
+    },
+    {
+      "nivel": "TRL 6: Sistema demonstrado em ambiente relevante",
+      "perguntas": [
+        "O sistema foi demonstrado em ambiente relevante?",
+        "As funcionalidades do sistema foram verificadas?",
+        "Os problemas encontrados foram resolvidos e documentados?"
+      ]
+    },
+    {
+      "nivel": "TRL 7: Sistema operacional demonstrado em ambiente real",
+      "perguntas": [
+        "O sistema operacional foi demonstrado em ambiente real?",
+        "O desempenho foi validado em condições reais?",
+        "Os usuários aprovaram o funcionamento?"
+      ]
+    },
+    {
+      "nivel": "TRL 8: Sistema completo qualificado",
+      "perguntas": [
+        "O sistema completo está qualificado para uso?",
+        "Todos os testes finais foram realizados e aprovados?",
+        "As documentações finais estão completas?"
+      ]
+    },
+    {
+      "nivel": "TRL 9: Sistema comprovado em operações reais",
+      "perguntas": [
+        "O sistema foi comprovado em operações reais?",
+        "Os usuários finais validaram o sistema?",
+        "As condições operacionais finais foram atendidas?"
+      ]
+    }
+  ]
+  

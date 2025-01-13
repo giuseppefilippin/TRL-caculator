@@ -1,84 +1,132 @@
-// Perguntas TRL organizadas por nível
-const perguntas = [
-    { nivel: "TRL 1", texto: "Os princípios básicos da tecnologia foram observados?" },
-    { nivel: "TRL 1", texto: "Foram identificadas potenciais aplicações para a tecnologia?" },
-    { nivel: "TRL 2", texto: "O conceito tecnológico foi formulado?" },
-    { nivel: "TRL 2", texto: "Foi realizada uma prova de conceito experimental?" },
-    { nivel: "TRL 3", texto: "A tecnologia foi validada em ambiente de laboratório?" }
-  ];
-  
-  let respostas = {};
-  
-  // Adicionar perguntas à tabela
+let respostas = {}; // Objeto global para armazenar respostas
+let nivelAtual = 0; // Controla o nível atual exibido
+
+// Função para carregar perguntas de um arquivo JSON
+async function carregarPerguntas() {
+  try {
+    const response = await fetch('scripts/perguntas.json'); // Carrega o arquivo JSON
+    if (!response.ok) {
+      throw new Error(`Erro ao carregar o JSON: ${response.statusText}`);
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+    alert("Erro ao carregar as perguntas. Verifique o console para mais detalhes.");
+    return [];
+  }
+}
+
+// Função para exibir um nível de perguntas por vez
+async function exibirNivel(nivel) {
+  const perguntas = await carregarPerguntas();
+  const nivelSelecionado = perguntas[nivel];
   const questionsTable = document.getElementById("questionsTable");
-  
-  perguntas.forEach((pergunta, index) => {
+  questionsTable.innerHTML = ""; // Limpa a tabela antes de adicionar o novo nível
+
+  // Adicionar perguntas à tabela
+  nivelSelecionado.perguntas.forEach((pergunta) => {
     const row = document.createElement("tr");
-  
-    // Porcentagem (placeholder por enquanto)
+
+    // Porcentagem
     const percentCell = document.createElement("td");
     percentCell.textContent = "0%";
     row.appendChild(percentCell);
-  
+
     // Pergunta
     const questionCell = document.createElement("td");
-    questionCell.textContent = `${pergunta.nivel}: ${pergunta.texto}`;
+    questionCell.textContent = `${nivelSelecionado.nivel}: ${pergunta}`;
     row.appendChild(questionCell);
-  
+
     // Resposta
     const answerCell = document.createElement("td");
     const select = document.createElement("select");
     select.innerHTML = `<option value="">Selecione</option><option value="sim">Sim</option><option value="nao">Não</option>`;
+    // Carregar resposta salva, se existir
+    if (respostas[pergunta]) {
+      select.value = respostas[pergunta];
+    }
     select.onchange = () => {
-      respostas[index] = select.value;
+      respostas[pergunta] = select.value; // Salvar a resposta
       atualizarProgresso(); // Atualizar progresso sempre que uma resposta for alterada
     };
     answerCell.appendChild(select);
     row.appendChild(answerCell);
-  
+
     // Comentários
     const commentCell = document.createElement("td");
     const textarea = document.createElement("textarea");
     commentCell.appendChild(textarea);
     row.appendChild(commentCell);
-  
+
     questionsTable.appendChild(row);
   });
-  
-  // Função para calcular o progresso
-  function atualizarProgresso() {
-    // Contar perguntas respondidas como "Sim"
-    const progressoPorNivel = {};
-    perguntas.forEach((pergunta, index) => {
-      const resposta = respostas[index];
-      const nivel = pergunta.nivel;
-  
-      if (!progressoPorNivel[nivel]) {
-        progressoPorNivel[nivel] = { total: 0, sim: 0 };
+
+  atualizarProgresso(); // Atualizar progresso ao carregar o nível
+}
+
+// Função para calcular o progresso
+function atualizarProgresso() {
+  const progressoPorNivel = {};
+  const perguntas = document.querySelectorAll("tr");
+
+  perguntas.forEach((row) => {
+    const nivelCell = row.querySelector("td:nth-child(2)");
+    const select = row.querySelector("select");
+
+    if (nivelCell && select) {
+      const nivelTexto = nivelCell.textContent.split(":")[0].trim(); // Extrai o nível TRL
+      const resposta = select.value;
+
+      if (!progressoPorNivel[nivelTexto]) {
+        progressoPorNivel[nivelTexto] = { total: 0, sim: 0 };
       }
-  
-      progressoPorNivel[nivel].total++;
+
+      progressoPorNivel[nivelTexto].total++;
       if (resposta === "sim") {
-        progressoPorNivel[nivel].sim++;
+        progressoPorNivel[nivelTexto].sim++;
       }
-    });
-  
-    // Atualizar a tabela com os percentuais
-    const rows = questionsTable.querySelectorAll("tr");
-    perguntas.forEach((pergunta, index) => {
-      const nivel = pergunta.nivel;
-      const progresso = progressoPorNivel[nivel];
-      const porcentagem = Math.round((progresso.sim / progresso.total) * 100);
-  
-      // Atualizar a célula correspondente
-      const percentCell = rows[index].querySelector("td");
-      percentCell.textContent = `${porcentagem}%`;
-    });
+    }
+  });
+
+  // Atualizar a tabela com os percentuais
+  const rows = document.querySelectorAll("tr");
+  rows.forEach((row) => {
+    const nivelCell = row.querySelector("td:nth-child(2)");
+    const percentCell = row.querySelector("td:nth-child(1)");
+
+    if (nivelCell && percentCell) {
+      const nivelTexto = nivelCell.textContent.split(":")[0].trim(); // Extrai o nível TRL
+      const progresso = progressoPorNivel[nivelTexto];
+
+      if (progresso) {
+        const porcentagem = Math.round((progresso.sim / progresso.total) * 100);
+        percentCell.textContent = `${porcentagem}%`;
+      }
+    }
+  });
+}
+
+// Navegação entre níveis
+document.getElementById("prevButton").onclick = () => {
+  if (nivelAtual > 0) {
+    nivelAtual--;
+    exibirNivel(nivelAtual);
   }
-  
-  // Calcular TRL
-  document.getElementById("submitButton").onclick = () => {
-    const nivel = Object.values(respostas).filter((resposta) => resposta === "sim").length;
-    alert(`O nível TRL calculado é: ${nivel}`);
-  };
-  
+};
+
+document.getElementById("nextButton").onclick = () => {
+  if (nivelAtual < 8) { // Total de níveis é 9 (0 a 8)
+    nivelAtual++;
+    exibirNivel(nivelAtual);
+  }
+};
+
+// Calcular o TRL ao final
+document.getElementById("submitButton").onclick = () => {
+  const nivel = Object.values(respostas).filter((resposta) => resposta === "sim").length;
+  alert(`O nível TRL calculado é: ${nivel}`);
+};
+
+// Inicializar com o primeiro nível
+document.addEventListener("DOMContentLoaded", () => exibirNivel(nivelAtual));

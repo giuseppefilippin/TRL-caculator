@@ -9,6 +9,7 @@
 <body>
   <h1>Calculadora TRL</h1>
   <div id="app">
+    <!-- Tabela de perguntas -->
     <table>
       <thead>
         <tr>
@@ -18,10 +19,21 @@
           <th>Comentários</th>
         </tr>
       </thead>
-      <tbody id="questionsTable"></tbody>
+      <tbody id="questionsTable">
+        <!-- As perguntas serão carregadas dinamicamente aqui -->
+      </tbody>
     </table>
-    <button id="submitButton">Calcular TRL</button>
+
+    <!-- Navegação entre níveis -->
+    <div id="navigation">
+      <button id="prevButton">Anterior</button>
+      <button id="nextButton">Próximo</button>
+    </div>
   </div>
+
+  <!-- Botão para calcular o TRL -->
+  <button id="submitButton">Calcular TRL</button>
+
   <script src="scripts/script.js"></script>
 </body>
 </html>
