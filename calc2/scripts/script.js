@@ -123,9 +123,22 @@ document.getElementById("nextButton").onclick = () => {
 };
 
 // Calcular o TRL ao final
-document.getElementById("submitButton").onclick = () => {
-  const nivel = Object.values(respostas).filter((resposta) => resposta === "sim").length;
-  alert(`O nível TRL calculado é: ${nivel}`);
+document.getElementById("submitButton").onclick = async () => {
+  const perguntas = await carregarPerguntas(); // Carrega todas as perguntas
+  let nivelCalculado = 0;
+
+  for (let i = 0; i < perguntas.length; i++) {
+    const nivel = perguntas[i];
+    const todasSim = nivel.perguntas.every((pergunta) => respostas[pergunta] === "sim");
+
+    if (todasSim) {
+      nivelCalculado = i + 1; // O TRL começa em 1
+    } else {
+      break; // Para o cálculo se um nível não estiver completo
+    }
+  }
+
+  alert(`O nível TRL calculado é: ${nivelCalculado}`);
 };
 
 // Inicializar com o primeiro nível
