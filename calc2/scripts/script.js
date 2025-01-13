@@ -52,22 +52,38 @@ async function carregarPerguntas() {
 
 // Função para exibir um nível de perguntas por vez
 async function exibirNivel(nivel) {
+  const comentariosElement = document.getElementById("nivelComentarios");
+
+  if (comentariosElement) {
+    // Atualiza o valor do campo com base no nível atual
+    comentariosElement.value = comentarios[nivel] || "";
+    comentariosElement.onchange = () => {
+      comentarios[nivel] = comentariosElement.value;
+    };
+  } else {
+    console.error("Elemento 'nivelComentarios' não encontrado no DOM.");
+  }
+
+  // Carregar perguntas e configurar a tabela
   const perguntas = await carregarPerguntas();
   const nivelSelecionado = perguntas[nivel];
   const questionsTable = document.getElementById("questionsTable");
-  questionsTable.innerHTML = "";
+  questionsTable.innerHTML = ""; // Limpa a tabela antes de adicionar o novo nível
 
   nivelSelecionado.perguntas.forEach((pergunta) => {
     const row = document.createElement("tr");
 
+    // Porcentagem
     const percentCell = document.createElement("td");
     percentCell.textContent = "0%";
     row.appendChild(percentCell);
 
+    // Pergunta
     const questionCell = document.createElement("td");
     questionCell.textContent = `${nivelSelecionado.nivel}: ${pergunta}`;
     row.appendChild(questionCell);
 
+    // Resposta
     const answerCell = document.createElement("td");
     const select = document.createElement("select");
     select.innerHTML = `<option value="">Selecione</option><option value="sim">Sim</option><option value="nao">Não</option>`;
@@ -81,14 +97,9 @@ async function exibirNivel(nivel) {
     questionsTable.appendChild(row);
   });
 
-  const comentariosNivel = document.getElementById("comentariosNivel");
-  comentariosNivel.value = comentarios[nivel] || "";
-  comentariosNivel.onchange = () => {
-    comentarios[nivel] = comentariosNivel.value;
-  };
-
   atualizarProgresso();
 }
+
 
 // Função para atualizar o progresso
 function atualizarProgresso() {
@@ -135,15 +146,25 @@ function atualizarProgresso() {
 // Função para calcular o TRL
 document.getElementById("submitButton").onclick = async () => {
   const perguntas = await carregarPerguntas();
-  let nivelCalculado = 0;
+  let notaTRL = 0;
 
-  perguntas.forEach((nivel, i) => {
+  for (let i = 0; i < perguntas.length; i++) {
+    const nivel = perguntas[i];
     const todasSim = nivel.perguntas.every((pergunta) => respostas[pergunta] === "sim");
-    if (todasSim) nivelCalculado = i + 1;
-  });
 
-  alert(`O nível TRL calculado é: ${nivelCalculado}`);
+    if (todasSim) {
+      notaTRL = i + 1;
+    } else {
+      break;
+    }
+  }
+
+  console.log("Nota TRL:", notaTRL);
+  
+  alert(`O nível TRL calculado é: ${notaTRL}`);
+  salvarDadosNoBanco(notaTRL);
 };
+
 
 // Navegação entre níveis
 document.getElementById("prevButton").onclick = () => {
@@ -161,3 +182,41 @@ document.getElementById("nextButton").onclick = async () => {
 document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("step1").classList.add("active");
 });
+
+function salvarDadosNoBanco(notaTRL) {
+  const nomeTecnologia = localStorage.getItem("nomeTecnologia");
+  const nomeResponsavel = localStorage.getItem("nomeResponsavel");
+  const dataAvaliacao = localStorage.getItem("dataAvaliacao");
+  const comentarios = document.getElementById("nivelComentarios")?.value || "";
+
+  if (!nomeTecnologia || !nomeResponsavel || !dataAvaliacao) {
+    console.error("Erro: Nome da tecnologia, responsável ou data não encontrados.");
+    alert("Erro ao salvar os dados. Verifique os campos preenchidos.");
+    return;
+  }
+
+  const dados = {
+    nomeTecnologia,
+    nomeResponsavel,
+    dataAvaliacao,
+    notaTRL,
+    comentarios,
+  };
+
+  fetch("database/arquivos.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(dados),
+  })
+    .then((response) => response.text())
+    .then((data) => {
+      console.log("Resposta do servidor:", data);
+      alert(data);
+    })
+    .catch((error) => {
+      console.error("Erro ao salvar os dados:", error);
+      alert("Erro ao salvar os dados no banco de dados.");
+    });
+}
