@@ -13,6 +13,19 @@ if ($conn->connect_error) {
     die("Erro de conexão: " . $conn->connect_error);
 }
 
+// Função para deletar um registro
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id'])) {
+    $id = intval($_POST['delete_id']);
+    $stmt = $conn->prepare("DELETE FROM trl_info WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    if ($stmt->execute()) {
+        echo "<p style='color: green;'>Registro ID $id deletado com sucesso!</p>";
+    } else {
+        echo "<p style='color: red;'>Erro ao deletar o registro: " . $stmt->error . "</p>";
+    }
+    $stmt->close();
+}
+
 // Consultar dados no banco de dados
 $sql = "SELECT id, nome_tecnologia, nome_responsavel, data_avaliacao, nota_trl, comentarios FROM trl_info";
 $result = $conn->query($sql);
@@ -37,6 +50,7 @@ $result = $conn->query($sql);
                 <th>Data de Avaliação</th>
                 <th>Nota TRL</th>
                 <th>Comentários</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -51,10 +65,16 @@ $result = $conn->query($sql);
                             <td>{$row['data_avaliacao']}</td>
                             <td>{$row['nota_trl']}</td>
                             <td>{$row['comentarios']}</td>
+                            <td>
+                                <form method='POST' style='display: inline;'>
+                                    <input type='hidden' name='delete_id' value='{$row['id']}'>
+                                    <button type='submit' class='delete-button'>Deletar</button>
+                                </form>
+                            </td>
                           </tr>";
                 }
             } else {
-                echo "<tr><td colspan='6'>Nenhum registro encontrado</td></tr>";
+                echo "<tr><td colspan='7'>Nenhum registro encontrado</td></tr>";
             }
             ?>
         </tbody>
