@@ -226,3 +226,7 @@ document.getElementById("homeLink").onclick = () => {
   document.getElementById("step1").classList.add("active");
   document.getElementById("step2").classList.remove("active");
 };
+
+document.getElementById("viewResultsButton").onclick = () => {
+  window.location.href = "database/resultados.php"; // Caminho para a página de resultados
+};
