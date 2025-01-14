@@ -1,5 +1,5 @@
 let respostas = {}; // Objeto global para armazenar respostas
-let comentarios = {}; // Armazena comentários por nível
+let comentarios = {}; // Armazena comentários
 let nivelAtual = 0; // Controla o nível atual exibido
 
 // Função para exibir a etapa 2 (perguntas)
