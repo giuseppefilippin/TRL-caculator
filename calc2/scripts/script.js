@@ -220,3 +220,9 @@ function salvarDadosNoBanco(notaTRL) {
       alert("Erro ao salvar os dados no banco de dados.");
     });
 }
+
+document.getElementById("homeLink").onclick = () => {
+  // Garantir que apenas a aba do formulário esteja ativa
+  document.getElementById("step1").classList.add("active");
+  document.getElementById("step2").classList.remove("active");
+};

@@ -159,3 +159,12 @@ table th {
   color: white;
   text-transform: uppercase;
 }
+
+#homeLink {
+  cursor: pointer;
+  text-decoration: underline;
+  color: white;
+}
+#homeLink:hover {
+  color: #ffcc00; /* Cor diferente ao passar o mouse */
+}
