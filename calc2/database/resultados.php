@@ -44,7 +44,6 @@ $result = $conn->query($sql);
     <table>
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Nome da Tecnologia</th>
                 <th>Responsável</th>
                 <th>Data de Avaliação</th>
@@ -59,7 +58,6 @@ $result = $conn->query($sql);
                 // Exibir os dados na tabela
                 while ($row = $result->fetch_assoc()) {
                     echo "<tr>
-                            <td>{$row['id']}</td>
                             <td>{$row['nome_tecnologia']}</td>
                             <td>{$row['nome_responsavel']}</td>
                             <td>{$row['data_avaliacao']}</td>
