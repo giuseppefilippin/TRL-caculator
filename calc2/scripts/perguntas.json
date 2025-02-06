@@ -2,16 +2,9 @@
     {
       "nivel": "TRL 1: Principios básicos observados e reportados",
       "perguntas": [
-        "Foram identificados os princípios básicos?",
-        "Foram identificadas potenciais aplicações para a tecnologia?",
-        "Foram documentado os estudos que confirmam os princípios básicos?",
-        "Foram identificadas leis e pressupostos utilizados na nova tecnologia e não proíbem o desenvolvimento?",
+        "Foram identificadas leis (LGPD, Cybersegurança, legislação ambiental) e pressupostos utilizados na nova tecnologia e não impedem sua aplicação?",
         "Foi levantada e documentada a ideia dos riscos, custos e cronograma para desenvolvimento da pesquisa tecnológica?",
-        "Foi identificado quem e onde será realizada as pesquisas da tecnologia?",
-        "Existe fonte monetária ou interessados, stakeholders (patrocinadores) na concretização da tecnologia?",
-        "Foi levantado se alguma outra instituição de pesquisa ou empresa está pesquisando a tecnologia no país?",
-        "Foi realizada pesquisa em ambiente exploratório?",
-        "Existem publicações científicas em revistas/anais/congressos a respeito da tecnologia?"
+        "Foi identificado quem e onde será realizada as pesquisas da tecnologia? "
       ]
     },
     {
