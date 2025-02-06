@@ -44,9 +44,13 @@
     {
       "nivel": "TRL 5: Tecnologia testada em ambiente relevante",
       "perguntas": [
-        "A tecnologia foi testada em ambiente relevante?",
-        "O desempenho da tecnologia foi monitorado?",
-        "As condições de operação foram documentadas?"
+        "Foi realizado a definição preliminar de requisitos de desempenho no ambiente relevante?",
+        "Foi realizado o  projeto preliminar do elemento, suportado por modelos apropriados para a verificação funções críticas?",
+        "Foi realizado plano de teste de função crítica para análise dos efeitos de escala?",
+        "Foram identificados os requisitos de interface de sistema?",
+        "Foram identificadas as interações entre os componentes / subsistemas?",
+        "Foi realizada modificações no ambiente de laboratório para aproximar ambiente operacional deixando apto a testes?",
+        "Foram realizados testes tecnológicos dos componentes em ambiente relevante?"
       ]
     },
     {
