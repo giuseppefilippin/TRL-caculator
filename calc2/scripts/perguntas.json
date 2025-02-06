@@ -65,9 +65,12 @@
     {
       "nivel": "TRL 7: Sistema operacional demonstrado em ambiente real",
       "perguntas": [
-        "O sistema operacional foi demonstrado em ambiente real?",
-        "O desempenho foi validado em condições reais?",
-        "Os usuários aprovaram o funcionamento?"
+        "Foi documentada a definição de requisitos de desempenho?",
+        "Foi documentada a definição do ambiente operacional?",
+        "Foi documentada a definição do versão beta e da realização do teste?",
+        "Foi simulado as funcionalidades disponíveis para demonstração em ambiente operacional?",
+        "Foi totalmente integrado o protótipo ao ambiente real demonstrado (ou simulado ambiente operacional)?",
+        "Foi realizado documentação do teste do modelo de protótipo?"
       ]
     },
     {
