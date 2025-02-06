@@ -76,21 +76,21 @@
     {
       "nivel": "TRL 8: Sistema completo qualificado",
       "perguntas": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Foi construído e integrado o modelo final no sistema final? (produto)",
+        "Foram realizados ajustes dos componentes a suas funções para deixar compatível com o sistema operacional?",
+        "Foi testado o sistema e caracterizado com seu design e função para a aplicação pretendida ?",
+        "Foram demonstrados os resultados o funcionamentos e a função da tecnologia em eventual teste de sistema de plataforma?",
+        "Foi concluída a documentação da gestão e controle de configuração?",
+        "Foram demonstradas todas as funcionalidades em ambiente operacional simulado e sistema qualificados através de teste e avaliação na plataforma real?",
+        "Foi identificado que o sistema atende às especificações? "
       ]
     },
     {
       "nivel": "TRL 9: Sistema comprovado em operações reais",
       "perguntas": [
-        "O sistema foi comprovado em operações reais?",
-        "Os usuários finais validaram o sistema?",
-        "As condições operacionais finais foram atendidas?"
+        "",
+        "",
+        ""
       ]
     }
   ]
