@@ -58,7 +58,7 @@
       "perguntas": [
         "Foram realizados identificação e análise das funções críticas do elemento e verificadas as funções críticas e documentadas em relatório?",
         "Foram documentados os requisitos completos de sistema e subsistema para funcionamento?",
-        "Foram concluídas as avaliações das características de desempenho da tecnologia mesmo com os possíveis GAP’s?",
+        "Foram concluídas as avaliações das características de desempenho da tecnologia mesmo com os possíveis GAP`s?",
         "Foi testado o modelo representativo (protótipo) completo em laboratório, ambiente operacional de alta fidelidade (simulação)?"
       ]
     },
@@ -76,9 +76,13 @@
     {
       "nivel": "TRL 8: Sistema completo qualificado",
       "perguntas": [
-        "O sistema completo está qualificado para uso?",
-        "Todos os testes finais foram realizados e aprovados?",
-        "As documentações finais estão completas?"
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
       ]
     },
     {
