@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // Função para carregar perguntas de um arquivo JSON
 async function carregarPerguntas() {
   try {
-    const response = await fetch('scripts/perguntas.json');
+    const response = await fetch('scripts/perguntas_software.json');
     if (!response.ok) {
       throw new Error(`Erro ao carregar o JSON: ${response.statusText}`);
     }
