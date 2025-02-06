@@ -52,18 +52,6 @@ async function carregarPerguntas() {
 
 // Função para exibir um nível de perguntas por vez
 async function exibirNivel(nivel) {
-  const comentariosElement = document.getElementById("nivelComentarios");
-
-  if (comentariosElement) {
-    // Atualiza o valor do campo com base no nível atual
-    comentariosElement.value = comentarios[nivel] || "";
-    comentariosElement.onchange = () => {
-      comentarios[nivel] = comentariosElement.value;
-    };
-  } else {
-    console.error("Elemento 'nivelComentarios' não encontrado no DOM.");
-  }
-
   // Carregar perguntas e configurar a tabela
   const perguntas = await carregarPerguntas();
   const nivelSelecionado = perguntas[nivel];
@@ -93,6 +81,16 @@ async function exibirNivel(nivel) {
     };
     answerCell.appendChild(select);
     row.appendChild(answerCell);
+
+    // Comentários
+    const commentCell = document.createElement("td");
+    const textarea = document.createElement("textarea");
+    textarea.placeholder = "Adicione comentários";
+    textarea.onchange = () => {
+      comentarios[pergunta] = textarea.value;
+    };
+    commentCell.appendChild(textarea);
+    row.appendChild(commentCell);
 
     questionsTable.appendChild(row);
   });
