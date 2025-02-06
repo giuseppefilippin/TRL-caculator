@@ -88,9 +88,9 @@
     {
       "nivel": "TRL 9: Sistema comprovado em operações reais",
       "perguntas": [
-        "",
-        "",
-        ""
+        "Foi realizado comissionamento na fase de operação inicial?",
+        "Foi plenamente demonstrado o sistema real?                  ",
+        "Foi implementado com sucesso o conceito operacional?"
       ]
     }
   ]
