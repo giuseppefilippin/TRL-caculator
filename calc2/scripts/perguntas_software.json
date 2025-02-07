@@ -88,9 +88,9 @@
     {
       "nivel": "TRL 9: Sistema comprovado em operações reais",
       "perguntas": [
-        "Foi realizado comissionamento na fase de operação inicial?",
-        "Foi plenamente demonstrado o sistema real?",
-        "Foi implementado com sucesso o conceito operacional?"
+        "O software foi colocado em produção e passou por uma fase inicial de operação controlada?",
+        "O sistema real foi plenamente demonstrado e aprovado para uso contínuo?",
+        "O conceito operacional do software foi implementado com sucesso?"
       ]
     }
   ]
