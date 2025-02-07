@@ -24,9 +24,9 @@
       "perguntas": [
         "Foi idealizado o projeto conceitual do elemento e documentado? ",
         "Foram especificados os requisitos de desempenho da tecnologia em ambiente operacional?",
-        "Foi verificada a viabilidade da aplicação por experimentos de laboratório (simulação)? ",
-        "Foram identificados os possíveis falhas da tecnologia em experimentos de laboratório? ",
-        "Foram identificados e documentados os componentes que devem trabalhar juntos(visão sistêmica)? ",
+        "Foi verificada a viabilidade da aplicação por testes unitários ou simulações?",
+        "Foram identificados os possíveis falhas da tecnologia em ambientes de teste? ",
+        "Foram identificados e documentados os componentes que devem interagir(visão sistêmica)? ",
         "Foram identificadas as tecnicas de desenvolvimento da tecnologia?"
       ]
     },
