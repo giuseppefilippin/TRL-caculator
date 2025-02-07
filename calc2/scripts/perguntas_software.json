@@ -59,7 +59,7 @@
         "Foram realizados identificação e análise das funções críticas do elemento e verificadas as funções críticas e documentadas em relatório?",
         "Foram documentados os requisitos completos de sistema e subsistema para funcionamento?",
         "Foram concluídas as avaliações das características de desempenho da tecnologia mesmo com os possíveis GAP`s?",
-        "Foi testado o modelo representativo (protótipo) completo em laboratório, ambiente operacional de alta fidelidade (simulação)?"
+        "Um modelo funcional (protótipo) foi testado em um ambiente operacional de alta fidelidade (simulação ou teste em ambiente realista)?"
       ]
     },
     {
