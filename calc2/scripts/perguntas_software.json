@@ -34,11 +34,11 @@
       "nivel": "TRL 4: Tecnologia validada em ambiente relevante",
       "perguntas": [
         "Foi consolidado o projeto conceitual da tecnologia?",
-        "Foram testados os componentes individuais em laboratórios e realizados relatórios?",
+        "Os componentes individuais do software foram testados isoladamente e os relatórios foram gerados?",
         "Foram totalmente identificados os possíveis GAP’s da tecnologia ?",
         "Foram identificados os requisitos gerais do sistema para aplicação aos usuários finais? ",
         "Foram estabelecidas as métricas de desempenho da tecnologia?",
-        "Foram iniciados os estudos de integração da tecnologia ao projeto final?"
+        "Foram iniciados os estudos de integração do software com outros sistemas necessários?"
       ]
     },
     {
