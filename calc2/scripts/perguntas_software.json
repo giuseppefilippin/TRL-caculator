@@ -20,7 +20,7 @@
       ]
     },
     {
-      "nivel": "TRL 3: Tecnologia validada em ambiente operacional",
+      "nivel": "TRL 3: Tecnologia validada em ambiente simulado",
       "perguntas": [
         "Foi idealizado o projeto conceitual do elemento e documentado? ",
         "Foram especificados os requisitos de desempenho da tecnologia em ambiente operacional?",
@@ -63,13 +63,13 @@
       ]
     },
     {
-      "nivel": "TRL 7: Sistema operacional demonstrado em ambiente real",
+      "nivel": "TRL 7: Sistema operacional demonstrado em ambiente operacional",
       "perguntas": [
         "Foi documentada a definição de requisitos de desempenho?",
-        "Foi documentada a definição do ambiente operacional?",
-        "Foi documentada a definição do versão beta e da realização do teste?",
+        "O ambiente operacional real do software foi definido e documentado?",
+        "A versão beta foi desenvolvida e testada com usuários reais ou simulações?",
         "Foi simulado as funcionalidades disponíveis para demonstração em ambiente operacional?",
-        "Foi totalmente integrado o protótipo ao ambiente real demonstrado (ou simulado ambiente operacional)?",
+        "Foi totalmente integrado o protótipo ao ambiente operacional demonstrado (ou simulado ambiente operacional)?",
         "Foi realizado documentação do teste do modelo de protótipo?"
       ]
     },
