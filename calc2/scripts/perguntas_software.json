@@ -2,9 +2,9 @@
     {
       "nivel": "TRL 1: Principios básicos observados e reportados",
       "perguntas": [
-        "Foram identificadas leis (LGPD, Cybersegurança, legislação ambiental) e pressupostos utilizados na nova tecnologia e não impedem sua aplicação?",
-        "Foi levantada e documentada a ideia dos riscos, custos e cronograma para desenvolvimento da pesquisa tecnológica?",
-        "Foi identificado quem e onde será realizada as pesquisas da tecnologia? "
+        "Foram identificadas leis e regulamentações aplicáveis ao software (LGPD, Cybersegurança, Propriedade Intelectual) e não há impedimentos para sua aplicação?",
+        "Foi levantada e documentada a ideia dos riscos, custos e cronograma para o desenvolvimento do software?",
+        "Foram identificados os responsáveis e o local onde será realizada a pesquisa para desenvolvimento do software?"
       ]
     },
     {
