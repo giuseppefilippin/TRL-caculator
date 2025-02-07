@@ -20,7 +20,7 @@
       ]
     },
     {
-      "nivel": "TRL 3: Tecnologia validada em ambiente de laboratório",
+      "nivel": "TRL 3: Tecnologia validada em ambiente operacional",
       "perguntas": [
         "Foi idealizado o projeto conceitual do elemento e documentado? ",
         "Foram especificados os requisitos de desempenho da tecnologia em ambiente operacional?",
