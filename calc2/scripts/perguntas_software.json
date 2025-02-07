@@ -10,10 +10,10 @@
     {
       "nivel": "TRL 2: Conceito tecnológico e/ou aplicação formulados",
       "perguntas": [
-        "Foram formuladas as potenciais aplicações?",
-        "Foi realizada pesquisa em ambiente de trabalho?",
-        "Foram identificadas as principais funções a serem desempenhadas pela tecnologia?",
-        "Foi documentada a viabilidade das aplicações confirmadas por estudos?",
+        "Foram formuladas as potenciais aplicações do software?",
+        "Foi realizada pesquisa em ambiente de desenvolvimento ou testes de viabilidade?",
+        "Foram identificadas as principais funcionabilidades que o software deverá desepenhar?",
+        "Foi documentada a viabilidade das aplicações confirmadas por estudos ou benchmarks?",
         "Foi identificada a funcionalidade da tecnologia?",
         "Foram identificados possíveis GAPs da tecnologia e documentados?",
         "Sabe que programa (projeto) a tecnologia vai apoiar?"
