@@ -21,6 +21,32 @@ h1 {
   letter-spacing: 2px;
 }
 
+/* Cabeçalho com logo e título */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centraliza os itens */
+  margin-top: 20px;
+}
+
+.header img {
+  width: 100px;
+  height: auto;
+  border-radius: 8px; /* Adiciona bordas arredondadas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona sombra */
+  margin: 0 10px; /* Adiciona espaço entre os ícones e o título */
+}
+
+/* Estilo para o ícone da Fundação Araucária */
+#fundacaoAraucariaLogo {
+  width: 100px; /* Ajusta a largura para ser igual ao outro ícone */
+  height: auto;
+  margin-top: 20px;
+  border-radius: 8px; /* Adiciona bordas arredondadas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona sombra */
+  margin-left: 10px; /* Adiciona espaço entre o título e o ícone */
+}
+
 /* Estilo geral para etapas */
 .step {
   display: none;
