@@ -2,46 +2,6 @@ let respostas = {}; // Objeto global para armazenar respostas
 let comentarios = {}; // Armazena comentários
 let nivelAtual = 0; // Controla o nível atual exibido
 
-// Função auxiliar para atribuir pesos às perguntas dinamicamente
-function getPesosPergunta(nivel, pergunta) {
-  // Pesos baseados no nível TRL
-  const pesosPorNivel = {
-    "TRL 1": 1.5,  // Peso base para perguntas do TRL 1
-    "TRL 2": 1.6,  // Peso base aumenta conforme o nível
-    "TRL 3": 1.7,
-    "TRL 4": 1.8,
-    "TRL 5": 1.9,
-    "TRL 6": 2.0,
-    "TRL 7": 2.1,
-    "TRL 8": 2.2,
-    "TRL 9": 2.3
-  };
-
-  // Pegar o número do TRL do início da string do nível
-  const trlNum = nivel.split(":")[0].trim();
-  const pesoBase = pesosPorNivel[trlNum] || 1.0;
-
-  // Ajustar peso baseado em palavras-chave importantes na pergunta
-  let pesoAjustado = pesoBase;
-  
-  const palavrasChave = {
-    alto: ["crítico", "crítica", "essencial", "fundamental", "segurança", "legal", "regulamentação", "LGPD", "produção"],
-    medio: ["teste", "validação", "documentação", "requisito", "funcionalidade", "desempenho"],
-    baixo: ["identificado", "levantado", "definido", "iniciado"]
-  };
-
-  // Aumenta peso para palavras-chave importantes
-  if (palavrasChave.alto.some(palavra => pergunta.toLowerCase().includes(palavra))) {
-    pesoAjustado *= 1.3;
-  } else if (palavrasChave.medio.some(palavra => pergunta.toLowerCase().includes(palavra))) {
-    pesoAjustado *= 1.1;
-  } else if (palavrasChave.baixo.some(palavra => pergunta.toLowerCase().includes(palavra))) {
-    pesoAjustado *= 0.9;
-  }
-
-  return Math.round(pesoAjustado * 100) / 100; // Arredonda para 2 casas decimais
-}
-
 // Função para exibir a etapa 2 (perguntas)
 function iniciarAvaliacao() {
   const nomeTecnologia = document.getElementById("nomeTecnologia").value.trim();
@@ -54,7 +14,7 @@ function iniciarAvaliacao() {
     return;
   }
 
-  // Salvar os dados no localStorage
+  // Salvar os dados no localStorage (opcional)
   localStorage.setItem("nomeTecnologia", nomeTecnologia);
   localStorage.setItem("nomeResponsavel", nomeResponsavel);
   localStorage.setItem("dataAvaliacao", dataAvaliacao);
@@ -66,6 +26,14 @@ function iniciarAvaliacao() {
   // Iniciar a exibição do nível atual
   exibirNivel(nivelAtual);
 }
+
+// Associar a função ao botão
+document.getElementById("startButton").onclick = iniciarAvaliacao;
+
+// Inicializar a página com step1 ativo
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("step1").classList.add("active");
+});
 
 // Função para carregar perguntas de um arquivo JSON
 async function carregarPerguntas() {
@@ -84,10 +52,11 @@ async function carregarPerguntas() {
 
 // Função para exibir um nível de perguntas por vez
 async function exibirNivel(nivel) {
+  // Carregar perguntas e configurar a tabela
   const perguntas = await carregarPerguntas();
   const nivelSelecionado = perguntas[nivel];
   const questionsTable = document.getElementById("questionsTable");
-  questionsTable.innerHTML = "";
+  questionsTable.innerHTML = ""; // Limpa a tabela antes de adicionar o novo nível
 
   nivelSelecionado.perguntas.forEach((pergunta) => {
     const row = document.createElement("tr");
@@ -129,6 +98,7 @@ async function exibirNivel(nivel) {
   atualizarProgresso();
 }
 
+
 // Função para atualizar o progresso
 function atualizarProgresso() {
   const progressoPorNivel = {};
@@ -139,79 +109,77 @@ function atualizarProgresso() {
     const select = row.querySelector("select");
 
     if (nivelCell && select) {
-      const [nivel, pergunta] = nivelCell.textContent.split(":");
+      const nivelTexto = nivelCell.textContent.split(":")[0].trim();
       const resposta = select.value;
 
-      if (!progressoPorNivel[nivel]) {
-        progressoPorNivel[nivel] = { 
-          somaPesos: 0, 
-          somaPontos: 0 
-        };
+      if (!progressoPorNivel[nivelTexto]) {
+        progressoPorNivel[nivelTexto] = { total: 0, sim: 0 };
       }
 
-      const peso = getPesosPergunta(nivel, pergunta);
-      progressoPorNivel[nivel].somaPesos += peso;
-      
+      progressoPorNivel[nivelTexto].total++;
       if (resposta === "sim") {
-        progressoPorNivel[nivel].somaPontos += peso;
+        progressoPorNivel[nivelTexto].sim++;
       }
     }
   });
 
-  // Atualiza as porcentagens na interface
   const rows = document.querySelectorAll("tr");
   rows.forEach((row) => {
     const nivelCell = row.querySelector("td:nth-child(2)");
     const percentCell = row.querySelector("td:nth-child(1)");
 
     if (nivelCell && percentCell) {
-      const nivel = nivelCell.textContent.split(":")[0].trim();
-      const progresso = progressoPorNivel[nivel];
+      const nivelTexto = nivelCell.textContent.split(":")[0].trim();
+      const progresso = progressoPorNivel[nivelTexto];
 
       if (progresso) {
-        const porcentagem = Math.round((progresso.somaPontos / progresso.somaPesos) * 100);
+        const porcentagem = Math.round((progresso.sim / progresso.total) * 100);
         percentCell.textContent = `${porcentagem}%`;
       }
     }
   });
 }
 
-// Função para calcular o TRL com média ponderada
-async function calcularTRL() {
-  const perguntas = await carregarPerguntas();
-  let nivelTRL = 0;
-  const threshold = 0.8; // 80% como threshold padrão
 
-  // Itera sobre cada nível TRL
+// Função para calcular o TRL
+document.getElementById("submitButton").onclick = async () => {
+  const perguntas = await carregarPerguntas();
+  let notaTRL = 0;
+
   for (let i = 0; i < perguntas.length; i++) {
     const nivel = perguntas[i];
-    let somaPesos = 0;
-    let somaPontos = 0;
+    const todasSim = nivel.perguntas.every((pergunta) => respostas[pergunta] === "sim");
 
-    // Calcula a média ponderada para o nível atual
-    nivel.perguntas.forEach((pergunta) => {
-      const peso = getPesosPergunta(nivel.nivel, pergunta);
-      somaPesos += peso;
-      
-      if (respostas[pergunta] === "sim") {
-        somaPontos += peso;
-      }
-    });
-
-    const mediaPonderada = somaPontos / somaPesos;
-
-    // Verifica se atingiu o threshold para este nível
-    if (mediaPonderada >= threshold) {
-      nivelTRL = i + 1;
+    if (todasSim) {
+      notaTRL = i + 1;
     } else {
       break;
     }
   }
 
-  console.log("Nota TRL:", nivelTRL);
-  alert(`O nível TRL calculado é: ${nivelTRL}`);
-  salvarDadosNoBanco(nivelTRL);
-}
+  console.log("Nota TRL:", notaTRL);
+  
+  alert(`O nível TRL calculado é: ${notaTRL}`);
+  salvarDadosNoBanco(notaTRL);
+};
+
+
+// Navegação entre níveis
+document.getElementById("prevButton").onclick = () => {
+  if (nivelAtual > 0) nivelAtual--;
+  exibirNivel(nivelAtual);
+};
+
+document.getElementById("nextButton").onclick = async () => {
+  const perguntas = await carregarPerguntas();
+  if (nivelAtual < perguntas.length - 1) nivelAtual++;
+  exibirNivel(nivelAtual);
+};
+
+// Inicializar
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("step1").classList.add("active");
+});
 
 function salvarDadosNoBanco(notaTRL) {
   const nomeTecnologia = localStorage.getItem("nomeTecnologia");
@@ -251,31 +219,68 @@ function salvarDadosNoBanco(notaTRL) {
     });
 }
 
-// Event Listeners
-document.getElementById("startButton").onclick = iniciarAvaliacao;
-document.getElementById("submitButton").onclick = calcularTRL;
-
-document.getElementById("prevButton").onclick = () => {
-  if (nivelAtual > 0) nivelAtual--;
-  exibirNivel(nivelAtual);
-};
-
-document.getElementById("nextButton").onclick = async () => {
-  const perguntas = await carregarPerguntas();
-  if (nivelAtual < perguntas.length - 1) nivelAtual++;
-  exibirNivel(nivelAtual);
-};
-
 document.getElementById("homeLink").onclick = () => {
+  // Garantir que apenas a aba do formulário esteja ativa
   document.getElementById("step1").classList.add("active");
   document.getElementById("step2").classList.remove("active");
 };
 
 document.getElementById("viewResultsButton").onclick = () => {
-  window.location.href = "database/resultados.php";
+  window.location.href = "database/resultados.php"; // Caminho para a página de resultados
 };
 
-// Inicializar a página
-document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("step1").classList.add("active");
-});
+
+// Pesos das perguntas por TRL
+const pesosPorTRL = {
+    "TRL 1": 1.5,
+    "TRL 2": 1.5,
+    "TRL 3": 1.5,
+    "TRL 4": 1.8,
+    "TRL 5": 1.8,
+    "TRL 6": 2.0,
+    "TRL 7": 2.0,
+    "TRL 8": 2.2,
+    "TRL 9": 2.5
+};
+
+// Nota mínima por TRL (80%)
+const notaMinima = 0.8;
+
+// Função para calcular o TRL usando média ponderada
+function calcularTRL() {
+    let respostas = {};
+
+    document.querySelectorAll(".resposta").forEach(select => {
+        const nivel = select.getAttribute("data-nivel");
+        const pergunta = select.getAttribute("data-pergunta");
+        const valor = parseFloat(select.value);
+
+        if (!respostas[nivel]) respostas[nivel] = { totalPeso: 0, somaPonderada: 0, totalPerguntas: 0, respondidasSim: 0 };
+
+        const peso = pesosPorTRL[nivel];
+        respostas[nivel].totalPeso += peso;
+        respostas[nivel].totalPerguntas += 1;
+
+        if (!isNaN(valor)) {
+            respostas[nivel].somaPonderada += valor * peso;
+            if (valor === 1) respostas[nivel].respondidasSim += 1;
+        }
+    });
+
+    let TRL_final = "TRL 1";
+    let encontrouTRL = false;
+
+    Object.keys(respostas).forEach(nivel => {
+        const percentualSim = respostas[nivel].respondidasSim / respostas[nivel].totalPerguntas;
+        if (percentualSim >= notaMinima) {
+            TRL_final = nivel;
+            encontrouTRL = true;
+        }
+    });
+
+    if (!encontrouTRL) {
+        TRL_final = "TRL 1"; // Garantir que sempre tenha um TRL mínimo
+    }
+
+    alert(`O TRL final do projeto é: ${TRL_final}`);
+}
