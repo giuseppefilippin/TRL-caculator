@@ -7,56 +7,57 @@
   <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-  <div class="header">
+  <header class="header">
     <img src="imgs/LACTEClogo.jpg" alt="Logo LACTEC">
     <h1 id="homeLink">Calculadora TRL</h1>
     <img id="fundacaoAraucariaLogo" src="imgs/fundacaoARAUCARIA.png" alt="Logo Fundação Araucária">
-  </div>
+  </header>
 
-  <!-- Etapa 1: Informações iniciais -->
-  <div id="step1" class="step active">
-    <h2>Bem-vindo à Calculadora TRL</h2>
-    <p>Preencha as informações abaixo para começar a avaliação:</p>
-    <div class="form-group">
-      <label for="nomeTecnologia">Nome do Projeto/produto:</label>
-      <input type="text" id="nomeTecnologia" placeholder="Digite o nome da tecnologia">
-    </div>
-    <div class="form-group">
-      <label for="nomeResponsavel">Responsável pela TC:</label>
-      <input type="text" id="nomeResponsavel" placeholder="Digite o nome do responsável">
-    </div>
-    <div class="form-group">
-      <label for="dataAvaliacao">Data da Avaliação:</label>
-      <input type="date" id="dataAvaliacao">
-    </div>
-    <button id="startButton">Iniciar Avaliação</button>
-    <button id="viewResultsButton">Ver Resultados Salvos</button>
-  </div>
-
-  <!-- Etapa 2: Perguntas -->
-  <div id="step2" class="step">
-    <div id="app">
-      <table>
-        <thead>
-          <tr>
-            <th>% Completo</th>
-            <th>Pergunta</th>
-            <th>Resposta</th>
-            <th>Comentários</th>
-          </tr>
-        </thead>
-        <tbody id="questionsTable">
-          <!-- As perguntas serão carregadas dinamicamente aqui -->
-        </tbody>
-      </table>
-      <div id="navigation">
-        <button id="prevButton">Anterior</button>
-        <button id="nextButton">Próximo</button>
+  <main>
+    <!-- Etapa 1: Informações iniciais -->
+    <section id="step1" class="step active">
+      <h2>Bem-vindo à Calculadora TRL</h2>
+      <p>Preencha as informações abaixo para começar a avaliação:</p>
+      <div class="form-group">
+        <label for="nomeTecnologia">Nome do Projeto/produto:</label>
+        <input type="text" id="nomeTecnologia" placeholder="Digite o nome da tecnologia">
       </div>
-    </div>
+      <div class="form-group">
+        <label for="nomeResponsavel">Responsável pela TC:</label>
+        <input type="text" id="nomeResponsavel" placeholder="Digite o nome do responsável">
+      </div>
+      <div class="form-group">
+        <label for="dataAvaliacao">Data da Avaliação:</label>
+        <input type="date" id="dataAvaliacao">
+      </div>
+      <button id="startButton">Iniciar Avaliação</button>
+      <button id="viewResultsButton">Ver Resultados Salvos</button>
+    </section>
 
-    <button id="submitButton">Calcular TRL</button>
-  </div>
+    <!-- Etapa 2: Perguntas -->
+    <section id="step2" class="step">
+      <div id="app">
+        <table>
+          <thead>
+            <tr>
+              <th>% Completo</th>
+              <th>Pergunta</th>
+              <th>Resposta</th>
+              <th>Comentários</th>
+            </tr>
+          </thead>
+          <tbody id="questionsTable">
+            <!-- As perguntas serão carregadas dinamicamente aqui -->
+          </tbody>
+        </table>
+        <div id="navigation">
+          <button id="prevButton">Anterior</button>
+          <button id="nextButton">Próximo</button>
+        </div>
+      </div>
+      <button id="submitButton">Calcular TRL</button>
+    </section>
+  </main>
 
   <script src="scripts/script.js"></script>
 </body>
