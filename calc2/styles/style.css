@@ -20,7 +20,7 @@ body {
   justify-content: center; /* Centraliza os itens */
   margin-top: 20px;
   position: relative;
-  z-index: -1; /* Coloca o header atrás de tudo */
+  z-index: 10; /* Coloca o header atrás de tudo */
 }
 
 .header img {
