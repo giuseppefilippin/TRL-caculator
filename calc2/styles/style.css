@@ -186,6 +186,7 @@ table th {
   cursor: pointer;
   text-decoration: underline;
   color: white;
+  z-index: 1000;
 }
 #homeLink:hover {
   color: #ffcc00; /* Cor diferente ao passar o mouse */

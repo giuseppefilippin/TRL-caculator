@@ -266,9 +266,12 @@ document.getElementById("nextButton").onclick = async () => {
   exibirNivel(nivelAtual);
 };
 
-document.getElementById("homeLink").onclick = () => {
+document.getElementById("homeLink").onclick = (event) => {
+  console.log("funciona porra");
+  event.preventDefault(); // Impede a navegação padrão do link
   document.getElementById("step1").classList.add("active");
   document.getElementById("step2").classList.remove("active");
+  window.location.href = "index.html"; // Ou o caminho correto para voltar ao menu
 };
 
 document.getElementById("viewResultsButton").onclick = () => {
