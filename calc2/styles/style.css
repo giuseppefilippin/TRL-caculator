@@ -14,39 +14,38 @@ body {
 .header {
   background-color: #007bff;
   color: white;
-  padding: 20px;
+  padding: 15px 20px;
   display: flex;
   align-items: center;
-  justify-content: center; /* Centraliza os itens */
-  margin-top: 20px;
+  justify-content: space-between; /* Alinha os elementos horizontalmente */
+  margin-top: 0; /* Remove espaçamento extra */
   position: relative;
-  z-index: 10; /* Coloca o header atrás de tudo */
+  z-index: 10;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .header img {
-  width: 100px;
+  width: 120px; /* Ajusta o tamanho dos logos */
   height: auto;
-  border-radius: 8px; /* Adiciona bordas arredondadas */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona sombra */
-  margin: 0 10px; /* Adiciona espaço entre os ícones e o título */
+  border-radius: 5px; /* Pequeno arredondamento */
+  margin: 0 15px;
 }
 
 .header h1 {
-  margin: 0;
-  font-size: 28px;
+  font-size: 30px;
+  font-weight: bold;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  cursor: pointer; /* Adiciona cursor de ponteiro */
+  letter-spacing: 1.5px;
+  flex-grow: 1; /* Permite que o título ocupe o espaço necessário */
+  text-align: center;
+  margin: 0;
 }
 
 /* Estilo para o ícone da Fundação Araucária */
 #fundacaoAraucariaLogo {
-  width: 100px; /* Ajusta a largura para ser igual ao outro ícone */
-  height: auto;
-  margin-top: 20px;
-  border-radius: 8px; /* Adiciona bordas arredondadas */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona sombra */
-  margin-left: 10px; /* Adiciona espaço entre o título e o ícone */
+  width: 120px; /* Mesmo tamanho do outro logo */
+  margin-top: 0;
+  margin-left: auto;
 }
 
 /* Estilo geral para etapas */
@@ -190,4 +189,20 @@ table th {
 }
 #homeLink:hover {
   color: #ffcc00; /* Cor diferente ao passar o mouse */
+}
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .header img {
+    width: 100px; /* Reduz um pouco os logos em telas pequenas */
+    margin: 10px 0;
+  }
+
+  .header h1 {
+    font-size: 24px;
+  }
 }
