@@ -67,7 +67,8 @@ body {
 .form-group {
   display: flex;
   flex-direction: column;
-  margin-bottom: 15px;
+  align-items: center;
+  width: 100%;
 }
 
 .form-group label {
@@ -81,7 +82,7 @@ body {
   border: 1px solid #ddd;
   border-radius: 4px;
   width: 100%;
-  max-width: 400px;
+  max-width: 600px;
   margin: 0 auto;
 }
 
@@ -190,6 +191,16 @@ table th {
 #homeLink:hover {
   color: #ffcc00; /* Cor diferente ao passar o mouse */
 }
+#step1 {
+  max-width: 900px; /* Define um tamanho máximo fixo */
+  width: 80%; /* Mantém um bom ajuste dinâmico */
+  margin: 40px auto; /* Aumenta o espaçamento para não parecer achatado */
+  padding: 40px; /* Aumenta o espaço interno */
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
 @media (max-width: 768px) {
   .header {
     flex-direction: column;
@@ -204,5 +215,24 @@ table th {
 
   .header h1 {
     font-size: 24px;
+  }
+}
+@media (max-width: 1024px) {
+  #step1 {
+    max-width: 90%; /* Ajusta em telas médias */
+  }
+
+  .form-group input {
+    width: 90%; /* Permite mais espaço para telas menores */
+  }
+}
+
+@media (max-width: 768px) {
+  #step1 {
+    max-width: 95%; /* Reduz ainda mais para telas pequenas */
+  }
+
+  .form-group input {
+    width: 100%; /* Ocupa toda a largura disponível */
   }
 }
