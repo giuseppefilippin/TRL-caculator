@@ -36,7 +36,7 @@ Our TRL Calculator is inspired by existing models used by governmental and resea
 ### Steps
 1. Clone this repository:
    ```sh
-   git clone https://github.com/giuseppefilippin/trl-calculator.git
+   git clone https://github.com/giuseppefilippin/TRL-calculator.git
    ```
 2. Navigate to the project directory and set up your server environment.
 3. Import the database (`database.sql`) into MySQL.
