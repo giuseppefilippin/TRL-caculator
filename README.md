@@ -42,6 +42,3 @@ Our TRL Calculator is inspired by existing models used by governmental and resea
 3. Import the database (`database.sql`) into MySQL.
 4. Run the project on your local or remote server.
 5. Access the application via your browser.
-
-
-
