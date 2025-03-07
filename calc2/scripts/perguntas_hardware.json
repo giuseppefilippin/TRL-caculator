@@ -1,0 +1,92 @@
+[
+    {
+        "nivel": "TRL 1 - Princípios Básicos Observados e Relatados",
+        "perguntas": [
+            "Os princípios físicos e eletrônicos que fundamentam o hardware foram identificados?",
+            "Existem estudos ou experimentos que confirmam os princípios básicos do hardware?",
+            "Foram identificadas restrições legais e normativas (como certificações de segurança elétrica, compatibilidade eletromagnética e descarte ambiental) que possam impactar o desenvolvimento do hardware?",
+            "Foram levantados riscos técnicos e desafios na viabilidade da implementação do hardware?",
+            "As ferramentas e metodologias escolhidas para pesquisa e desenvolvimento do hardware permitem sua evolução para níveis superiores de maturidade tecnológica?"
+        ]
+    },
+    {
+        "nivel": "TRL 2 - Formulação do Conceito Tecnológico",
+        "perguntas": [
+            "Foram formuladas as potenciais aplicações do hardware?",
+            "Foram identificadas as principais funções a serem desempenhadas pelo hardware?",
+            "Foi identificada a funcionalidade do hardware?",
+            "Foram identificados possíveis GAPs da tecnologia e documentados?",
+            "Foi documentada a viabilidade das aplicações do hardware, com base em estudos preliminares?"
+        ]
+    },
+    {
+        "nivel": "TRL 3 - Prova de Conceito Experimental",
+        "perguntas": [
+            "Foi concretizada a realização do projeto conceitual do hardware e documentado?",
+            "Foram especificados os requisitos de desempenho do hardware?",
+            "Foi verificada a viabilidade da aplicação do hardware por experimentos de laboratório (simulação)?",
+            "Foram identificados os possíveis defeitos do hardware em experimentos de laboratório?",
+            "Foi plenamente demonstrada a viabilidade científica do hardware?",
+            "Foram identificadas e desenvolvidas as técnicas de desenvolvimento do hardware?"
+        ]
+    },
+    {
+        "nivel": "TRL 4 - Validação de Componentes em Ambiente Laboratorial",
+        "perguntas": [
+            "Foram testados os componentes individuais do hardware em laboratório e realizados relatórios?",
+            "Foram totalmente identificados os possíveis GAPs da tecnologia?",
+            "Foram identificados os requisitos gerais do sistema para aplicação aos usuários finais?",
+            "Foram estabelecidas as métricas de desempenho do hardware?"
+        ]
+    },
+    {
+        "nivel": "",
+        "perguntas": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "nivel": "",
+        "perguntas": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "nivel": "",
+        "perguntas": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "nivel": "",
+        "perguntas": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "nivel": "",
+        "perguntas": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    }
+]
