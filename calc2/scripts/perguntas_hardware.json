@@ -40,53 +40,59 @@
         ]
     },
     {
-        "nivel": "",
+        "nivel": "TRL 5 - Validação do Sistema em Ambiente Relevante",
         "perguntas": [
-            "",
-            "",
-            "",
-            "",
-            ""
+            "Foi realizada a definição preliminar de requisitos de desempenho no ambiente relevante?",
+            "Foi realizado o projeto preliminar do hardware, suportado por modelos apropriados para a verificação de funções críticas?",
+            "Foram identificados os efeitos das possíveis falhas da tecnologia (se houver)?",
+            "Foram identificados os requisitos de interface do sistema?",
+            "Foram identificadas as interações entre os componentes/subsistemas?",
+            "Foram realizados testes tecnológicos dos componentes em ambiente relevante?"
         ]
     },
     {
-        "nivel": "",
+        "nivel": "TRL 6 - Demonstração do Sistema em Ambiente Relevante",
         "perguntas": [
-            "",
-            "",
-            "",
-            "",
-            ""
+            "Foram identificadas e analisadas as funções críticas do hardware, verificadas e documentadas em relatório?",
+            "O ambiente relevante de funcionamento para o sistema foi definido?",
+            "Foi realizada e documentada a definição de requisitos de desempenho e do ambiente relevante?",
+            "Foram documentados os requisitos completos de sistema e subsistema para funcionamento?",
+            "Foram concluídas as avaliações das características de desempenho da tecnologia, mesmo considerando os possíveis GAPs?",
+            "Foi testado o modelo representativo (protótipo) completo em laboratório ou ambiente operacional de alta fidelidade (simulação)?"
         ]
     },
     {
-        "nivel": "",
+        "nivel": "TRL 7 - Demonstração do Protótipo em Ambiente Realista",
         "perguntas": [
-            "",
-            "",
-            "",
-            "",
-            ""
+            "Foi documentada a definição de requisitos de desempenho para o ambiente operacional?",
+            "Foi documentada a definição do ambiente operacional e suas restrições?",
+            "Foi documentada a definição do modelo e os procedimentos para realização dos testes?",
+            "Foram realizados testes em cada interface do sistema, sob condições normais e anômalas?",
+            "Foram simuladas as funcionalidades disponíveis para demonstração em um ambiente operacional?",
+            "O protótipo foi totalmente integrado ao ambiente real (ou simulado em um ambiente operacional adequado)?",
+            "Os testes do protótipo do sistema foram realizados com sucesso no ambiente estipulado?",
+            "Foi realizada a documentação completa dos testes do modelo de protótipo?",
+            "Foram identificados e documentados os desafios técnicos e financeiros para a escalabilidade da tecnologia?"
         ]
     },
     {
-        "nivel": "",
+        "nivel": "TRL 8 - Certificação do Sistema Completo",
         "perguntas": [
-            "",
-            "",
-            "",
-            "",
-            ""
+            "Foi construído e integrado o modelo final no sistema final (produto)?",
+            "Foram realizados ajustes dos componentes para compatibilidade com o sistema operacional?",
+            "Foi testado o sistema e caracterizado com seu design e função para a aplicação pretendida?",
+            "Foi concluída a documentação formal de regulamentação?",
+            "Foi concluída a documentação da gestão e controle de configuração?"
         ]
     },
     {
-        "nivel": "",
+        "nivel": "TRL 9 - Sistema Operacional e Produção em Escala",
         "perguntas": [
-            "",
-            "",
-            "",
-            "",
-            ""
+            "Foi plenamente demonstrado o sistema real em operação?",
+            "Foi implementado com sucesso o conceito operacional da tecnologia?",
+            "Foram realizados todos os processos de fabricação controlados para garantir o nível de qualidade adequado?",
+            "Foram realizadas publicações científicas e/ou patentes a respeito da tecnologia?",
+            "É possível reproduzir o mesmo projeto com os mesmos requisitos?"
         ]
     }
 ]
