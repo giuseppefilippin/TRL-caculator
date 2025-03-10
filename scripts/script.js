@@ -68,6 +68,7 @@ function iniciarAvaliacao() {
 }
 
 // Função para carregar perguntas de um arquivo JSON
+/*
 async function carregarPerguntas() {
   try {
     const response = await fetch('scripts/perguntas_software.json');
@@ -81,7 +82,7 @@ async function carregarPerguntas() {
     return [];
   }
 }
-
+*/
 // Função para exibir um nível de perguntas por vez
 async function exibirNivel(nivel) {
   const perguntas = await carregarPerguntas();
