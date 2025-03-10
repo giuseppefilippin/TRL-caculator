@@ -68,7 +68,6 @@ function iniciarAvaliacao() {
 }
 
 // Função para carregar perguntas de um arquivo JSON
-/*
 async function carregarPerguntas() {
   try {
     const response = await fetch('scripts/perguntas_software.json');
@@ -82,7 +81,7 @@ async function carregarPerguntas() {
     return [];
   }
 }
-*/
+
 // Função para exibir um nível de perguntas por vez
 async function exibirNivel(nivel) {
   const perguntas = await carregarPerguntas();
@@ -213,7 +212,7 @@ async function calcularTRL() {
   alert(`O nível TRL calculado é: ${nivelTRL}`);
   salvarDadosNoBanco(nivelTRL);
 }
-
+/*
 function salvarDadosNoBanco(notaTRL) {
   const nomeTecnologia = localStorage.getItem("nomeTecnologia");
   const nomeResponsavel = localStorage.getItem("nomeResponsavel");
@@ -251,7 +250,7 @@ function salvarDadosNoBanco(notaTRL) {
       alert("Erro ao salvar os dados no banco de dados.");
     });
 }
-
+*/
 // Event Listeners
 document.getElementById("startButton").onclick = iniciarAvaliacao;
 document.getElementById("submitButton").onclick = calcularTRL;
