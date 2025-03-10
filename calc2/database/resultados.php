@@ -15,7 +15,7 @@ if ($conn->connect_error) {
 
 // Função para deletar um registro
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id'])) {
-    $id = intval($_POST['delete_id']);
+    $id  = ($_POST['delete_id']);
     $stmt = $conn->prepare("DELETE FROM trl_info WHERE id = ?");
     $stmt->bind_param("i", $id);
     if ($stmt->execute()) {
