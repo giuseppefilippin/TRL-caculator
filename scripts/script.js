@@ -116,7 +116,7 @@ async function exibirNivel(nivel) {
     // Comentários
     const commentCell = document.createElement("td");
     const textarea = document.createElement("textarea");
-    textarea.placeholder = "Adicione comentários";
+    textarea.placeholder = "banco de dados não funciona no momento, favor deixar os comentarios no Excel";
     textarea.onchange = () => {
       comentarios[pergunta] = textarea.value;
     };
