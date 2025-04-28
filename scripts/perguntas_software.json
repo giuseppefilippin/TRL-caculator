@@ -2,7 +2,8 @@
     {
       "nivel": "TRL 1: Principios básicos observados e reportados",
       "perguntas": [
-        "Foram identificadas leis e regulamentações aplicáveis ao software (LGPD, Cybersegurança, Propriedade Intelectual) e não há impedimentos para sua aplicação?",
+        "Foram identificadas leis e regulamentações aplicáveis ao software (LGPD, Propriedade Intelectual) e não há impedimentos para sua aplicação?",
+        "Foram identificadas leis e regulamentações aplicáveis ao software relacionadas à cibersegurança, e não há impedimentos para sua aplicação?",
         "Foi levantada e documentada a ideia dos riscos, custos e cronograma para o desenvolvimento do software?",
         "Foram identificados os responsáveis e o local onde será realizada a pesquisa para desenvolvimento do software?"
       ]
@@ -11,6 +12,11 @@
       "nivel": "TRL 2: Conceito tecnológico e/ou aplicação formulados",
       "perguntas": [
         "Foram formuladas as potenciais aplicações do software?",
+        "Foi elaborado documento de requisitos do sistema?",
+        "Foi elaborada a arquitetura de software do sistema?",
+        "Caso a solução tenha interface gráfica, foi feito um estudo de usabilidade e experiência do usuário?",
+        "Foi elaborada a prototipação de telas do sistema?",
+        "Foi elaborado planos de teste para validação do sistema",
         "Foi realizada pesquisa em ambiente de desenvolvimento ou testes de viabilidade?",
         "Foram identificadas as principais funcionabilidades que o software deverá desepenhar?",
         "Foi documentada a viabilidade das aplicações confirmadas por estudos ou benchmarks?",
