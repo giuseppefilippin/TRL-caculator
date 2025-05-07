@@ -1,0 +1,92 @@
+[
+  {
+    "nivel": "TRL 1 - Princípios Básicos Observados e Relatados",
+    "perguntas": [
+      "Os princípios físicos e eletrônicos fundamentais (ex: semicondutores, circuitos RC, leis de Kirchhoff) foram identificados e compreendidos?",
+      "Existem estudos teóricos ou práticos que sustentam a base eletrônica do projeto?",
+      "Foram identificadas as normas técnicas e regulamentações aplicáveis (ex: ANATEL, IEC, FCC)?",
+      "Riscos técnicos iniciais, como interferência eletromagnética e consumo de energia, foram avaliados?",
+      "As ferramentas e metodologias para P&D em eletrônica foram selecionadas e validadas para esta fase?"
+    ]
+  },
+  {
+    "nivel": "TRL 2 - Formulação do Conceito Tecnológico",
+    "perguntas": [
+      "As possíveis aplicações da solução eletrônica foram descritas (ex: automação, IoT, controle industrial)?",
+      "Foram definidas as principais funções eletrônicas do sistema (ex: sensoriamento, controle, atuação)?",
+      "O conceito do circuito ou sistema eletrônico foi modelado ou simulado teoricamente?",
+      "Foram identificadas limitações iniciais de projeto como ruído, latência, dissipação térmica?",
+      "Foi verificada a viabilidade das aplicações propostas por benchmarking ou projetos similares?"
+    ]
+  },
+  {
+    "nivel": "TRL 3 - Prova de Conceito Experimental",
+    "perguntas": [
+      "Foi documentado o projeto conceitual dos circuitos ou placas eletrônicas?",
+      "Os requisitos elétricos (tensão, corrente, impedância, etc.) foram especificados?",
+      "Simulações (ex: SPICE) ou montagens de bancada demonstraram a viabilidade do conceito?",
+      "Houve identificação de falhas ou gargalos durante os primeiros testes?",
+      "A escolha de componentes eletrônicos foi baseada em critérios técnicos e de disponibilidade?",
+      "Foram exploradas técnicas de desenvolvimento como modularidade, proteção contra surtos, filtros?"
+    ]
+  },
+  {
+    "nivel": "TRL 4 - Validação de Componentes em Ambiente Laboratorial",
+    "perguntas": [
+      "Os módulos eletrônicos foram testados de forma isolada com instrumentação adequada (osciloscópio, multímetro, etc.)?",
+      "Falhas críticas e limitações de projeto foram devidamente documentadas?",
+      "Os requisitos do sistema final foram alinhados com as funcionalidades dos módulos testados?",
+      "Indicadores como consumo de potência, tempo de resposta, imunidade a ruído foram medidos?"
+    ]
+  },
+  {
+    "nivel": "TRL 5 - Validação do Sistema em Ambiente Relevante",
+    "perguntas": [
+      "O sistema eletrônico foi testado em um ambiente próximo ao de operação real (ex: gabinete, campo, instalação)?",
+      "Foram avaliadas falhas potenciais como interferência, aquecimento, falha de comunicação?",
+      "Foram definidos os requisitos de interface elétrica e lógica entre os módulos?",
+      "A integração entre subsistemas (ex: sensores, atuadores, microcontrolador) foi realizada e testada?",
+      "Houve documentação das condições de operação e resultados dos testes em campo simulado?"
+    ]
+  },
+  {
+    "nivel": "TRL 6 - Demonstração do Sistema em Ambiente Relevante",
+    "perguntas": [
+      "As funções críticas como redundância, proteção, fail-safe foram analisadas e documentadas?",
+      "O sistema foi testado em condições de operação representativas de uso real?",
+      "Requisitos de desempenho, limites de operação e ambiente foram formalmente registrados?",
+      "A documentação técnica dos subsistemas está completa e padronizada?",
+      "Um protótipo funcional foi submetido a testes de estresse e validado em laboratório ou bancada de simulação?"
+    ]
+  },
+  {
+    "nivel": "TRL 7 - Demonstração do Protótipo em Ambiente Realista",
+    "perguntas": [
+      "O protótipo eletrônico foi integrado a um sistema funcional completo?",
+      "Testes de desempenho foram conduzidos sob diferentes condições de carga e ambiente?",
+      "Procedimentos para validação do protótipo foram definidos e seguidos?",
+      "As interfaces foram testadas contra variações elétricas e ruídos externos?",
+      "Foi avaliada a robustez do sistema em ciclos prolongados de operação?"
+    ]
+  },
+  {
+    "nivel": "TRL 8 - Certificação do Sistema Completo",
+    "perguntas": [
+      "O sistema eletrônico foi certificado por órgãos competentes (ex: INMETRO, FCC)?",
+      "Compatibilizações finais entre componentes, firmware e interfaces foram concluídas?",
+      "A documentação de produção, manutenção e manuais técnicos foi finalizada?",
+      "Todos os critérios de projeto (funcionalidade, segurança, EMC) foram atendidos?",
+      "Planos de controle e rastreabilidade de versões foram estabelecidos?"
+    ]
+  },
+  {
+    "nivel": "TRL 9 - Sistema Operacional e Produção em Escala",
+    "perguntas": [
+      "O sistema eletrônico está em operação estável no ambiente final de uso?",
+      "Foi comprovada a reprodutibilidade do sistema com os mesmos parâmetros técnicos?",
+      "Processos industriais para produção em série foram definidos e validados?",
+      "Foram registrados patentes, publicações ou manuais de aplicação?",
+      "Existe plano de suporte, manutenção e atualização para a versão comercial?"
+    ]
+  }
+]
