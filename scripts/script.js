@@ -26,7 +26,7 @@ function getPesosPergunta(nivel, pergunta) {
   
   const palavrasChave = {
     alto: ["crítico", "crítica", "essencial", "fundamental", "segurança", "legal", "regulamentação", "LGPD", "produção"],
-    medio: ["teste", "validação", "documentação", "requisito", "funcionalidade", "desempenho"],
+    medio: ["teste", "testes", "testados", "validação", "documentação","documentado", "requisito", "funcionalidade", "desempenho"],
     baixo: ["identificado", "levantado", "definido", "iniciado"]
   };
 

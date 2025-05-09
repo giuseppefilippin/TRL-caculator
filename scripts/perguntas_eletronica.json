@@ -3,8 +3,8 @@
     "nivel": "TRL 1 - Princípios Básicos Observados e Relatados",
     "perguntas": [
       "Os princípios físicos e eletrônicos fundamentais (ex: semicondutores, circuitos RC, leis de Kirchhoff) foram identificados e compreendidos?",
-      "Existem estudos teóricos ou práticos que sustentam a base eletrônica do projeto?",
-      "Foram identificadas as normas técnicas e regulamentações aplicáveis (ex: ANATEL, IEC, FCC)?",
+      "Existem estudos teóricos ou práticos que sustentam a base eletrônica do projeto? Foram realizados testes para validar os conceitos fundamentais, garantindo a segurança e o desempenho esperados?",
+      "Foram identificadas as normas técnicas e regulamentações aplicáveis (ex: ANATEL, IEC, FCC)? Foram consideradas as regulamentações legais como a LGPD e outras normas aplicáveis para garantir a conformidade do sistema?",
       "Riscos técnicos iniciais, como interferência eletromagnética e consumo de energia, foram avaliados?",
       "As ferramentas e metodologias para P&D em eletrônica foram selecionadas e validadas para esta fase?"
     ]
